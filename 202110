@@ -1,4 +1,7 @@
 # 2021-10-15
 Title: Learning Event-Based Motion Deblurring
 Auther: Zhe Jiang, Yu Zhang, Dongqing Zou, Jimmy Ren, Jiancheng Lv, Yebin Liu.
-Comments: 商汤在CVPR2020上的投稿，目前引用量25。
+Comments: 商汤在CVPR2020上的投稿，目前引用量25。主要做了：
+
+在事件的帮助下从严重运动模糊的图片中提取视频。
+
