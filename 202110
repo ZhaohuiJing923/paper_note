@@ -11,3 +11,14 @@ Comments: 起源人工智呢研究所在CVPR2021上的投稿。主要做了：
 为了解决所提问题，所以作者提出新的mutil-stage框架：前几个stage为encoder-decoder，最后stage在原始输入图上进行操作。
 
 本文依然是着眼于deblur中常用的mutil-scale方法，老方法，新改进。发现已有方法的问题，且让读者觉得，这确实是现有研究中存在的问题，然后提出的方法确实可以解决这个问题。
+
+
+# 2021-10-19
+Title：Spatially-Adaptive Image Restoration using Distortion-Guided Networks
+Auther：Kuldeep Purohit, Maitreya Suin, A. N. Rajagopalan, Vishnu Naresh Boddeti
+Comments:密歇根州立大学。主要做了：
+
+1. 单个图像恢复任务，去除空间变化的退化，如雨滴、雨条纹、阴影和运动模糊。
+1. 将恢复任务建模为失真区域定位和区域引导稀疏恢复的组合任务。用失真定位知识来帮助各种空间变化图像退化的问题。两个网络：失真定位网络netL，恢复网络netR，两个网络结构一样，均是Unet，便于把失真定位
+信息传递给netR。netL是预训练好的网络，网络每层的输出都会传递给netR，是一个二分类网络，输出为0，1失真定位。
+
