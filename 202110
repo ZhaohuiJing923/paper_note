@@ -19,6 +19,14 @@ Auther：Kuldeep Purohit, Maitreya Suin, A. N. Rajagopalan, Vishnu Naresh Boddet
 Comments:密歇根州立大学。主要做了：
 
 1. 单个图像恢复任务，去除空间变化的退化，如雨滴、雨条纹、阴影和运动模糊。
-1. 将恢复任务建模为失真区域定位和区域引导稀疏恢复的组合任务。用失真定位知识来帮助各种空间变化图像退化的问题。两个网络：失真定位网络netL，恢复网络netR，两个网络结构一样，均是Unet，便于把失真定位
+2. 将恢复任务建模为失真区域定位和区域引导稀疏恢复的组合任务。用失真定位知识来帮助各种空间变化图像退化的问题。两个网络：失真定位网络netL，恢复网络netR，两个网络结构一样，均是Unet，便于把失真定位
 信息传递给netR。netL是预训练好的网络，网络每层的输出都会传递给netR，是一个二分类网络，输出为0，1失真定位。
 
+# 2021-10-21
+Title：Optical Flow Estimation from a Single Motion-blurred Image
+Auther：Dawit Mureja Argaw, Junsik Kim, Francois Rameau, Jae Won Cho, In So Kweon
+Comments: 韩国KAIST机器人与计算机视觉实验室的工作，发表在了AAAI2021上，从题目也可以看出来，主要做的是从单张motion-blurred图中估计光流。与我目前工作不同在于，我想要从单张sharp图来恢复光流。
+运动模糊被认为是一种不受欢迎的产物。然而，它包含的运动信息可以被处理成更可解释的形式。从motion-bulrred图中估计flow，
+
+1. 用预训练好的光流估计网络，计算第一帧和最后一帧的光流，作为假的GT。
+2. 特征编码器：feed-forward convolutional network。特征解码器：spatial transformer networks (STNs)+feature refining blocks
