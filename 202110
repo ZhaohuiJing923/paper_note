@@ -28,5 +28,10 @@ Auther：Dawit Mureja Argaw, Junsik Kim, Francois Rameau, Jae Won Cho, In So Kwe
 Comments: 韩国KAIST机器人与计算机视觉实验室的工作，发表在了AAAI2021上，从题目也可以看出来，主要做的是从单张motion-blurred图中估计光流。与我目前工作不同在于，我想要从单张sharp图来恢复光流。
 运动模糊被认为是一种不受欢迎的产物。然而，它包含的运动信息可以被处理成更可解释的形式。从motion-bulrred图中估计flow，
 
-1. 用预训练好的光流估计网络，计算第一帧和最后一帧的光流，作为假的GT。
-2. 特征编码器：feed-forward convolutional network。特征解码器：spatial transformer networks (STNs)+feature refining blocks
+1. 两帧sharp图。预训练好的插帧，得到若干个中间帧，averaging first, intermediate and last images to get blur；用预训练好的光流估计网络，计算第一帧和最后一帧的光流，作为pseudo-ground truth
+optical flow。
+2. 网络由三部分组成：特征编码器：feed-forward convolutional network。特征解码器：spatial transformer networks (STNs)+feature refining blocks。Flow Decoder。输入为：blur image，pse-
+udo-ground truth optical flow为监督信号。
+3. Flow Decoder由Decoded left image features， Decoded right image features得到flow。这点符合常规计算flow的逻辑，由前一帧的feature和后一帧的feature来得到中间flow。
+
+总的来说，这篇文章问题找的很好，setting也合理。生成blur，flow的过程合理，最后确实实现了从motion-blur image中estimate flow的目的。
