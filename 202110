@@ -16,11 +16,19 @@ Comments: 起源人工智呢研究所在CVPR2021上的投稿。主要做了：
 # 2021-10-19
 Title：Spatially-Adaptive Image Restoration using Distortion-Guided Networks
 Auther：Kuldeep Purohit, Maitreya Suin, A. N. Rajagopalan, Vishnu Naresh Boddeti
-Comments:密歇根州立大学。主要做了：
+Comments:密歇根州立大学，AAAI2021的工作。主要做了：
 
 1. 单个图像恢复任务，去除空间变化的退化，如雨滴、雨条纹、阴影和运动模糊。
 2. 将恢复任务建模为失真区域定位和区域引导稀疏恢复的组合任务。用失真定位知识来帮助各种空间变化图像退化的问题。两个网络：失真定位网络netL，恢复网络netR，两个网络结构一样，均是Unet，便于把失真定位
 信息传递给netR。netL是预训练好的网络，网络每层的输出都会传递给netR，是一个二分类网络，输出为0，1失真定位。
+
+这篇文章的novelty：用distortion引导不同的image restore任务。他们通过观察说明，image的大部分pixel没有或者很少有distortion，且image的distortion数量和空间分布都不同。但是现有的CNN方法：用
+同一种空间不变性filter处理高度图片相关且空间变换的distortion；labeled dataset中distortion-localization没有利用到。这是novelty。
+idea的实现是通过netL和netR网络的feature传递实现指导。SFM，SC，SNL都是为了pretrained netL中的distortion信息可以很好的传到netR，起到帮助netR来restore，网络设计是idea能够work的原因。
+总的来说，这篇文章就idea确实比较novelty，在restore中引入了distortion，并且最后实验的结果也是比较work的。
+网络结构的设计值得学习，有意义且能够work。
+
+思考：we can use image absolute difference as a groudtruth.
 
 
 # 2021-10-21
