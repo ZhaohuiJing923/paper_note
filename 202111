@@ -13,3 +13,21 @@ Comments:发表在CVPR2016上的文章，提出了Cityscapes数据集，语义�
 1. 最先进的方法在我们的数据集上的性能相对顺序与在更通用的数据集(如PASCAL VOC)上的性能明显不同。我们的结论是，通过这种通用数据集可能无法实现城市场景理解的重大进展。
 2. 目前在KITTI和CamVid上的语义标记的最先进水平很容易达到，甚至在某种程度上通过应用现成的全卷积网络[41]只在城市景观上训练，如第3.5节所示。这突出了我们的数据集的兼容性和独特优势。
 3. Cityscapes将给我们的领域带来重大的新挑战，因为它目前还远远没有被解决。
+
+
+# 2021-11-5
+Title：MINIMAL GEOMETRY-DISTORTION CONSTRAINT FOR UNSUPERVISED IMAGE-TO-IMAGE TRANSLATION
+Auther：郭家贤
+Comments：ICLR2021，主要做了：
+
+image to image translation问题中的几何失真问题，首先把用之前一些方法translation前后的图片像素值绘图，发现一个目标区域中颜色在translation之后可以随机的映射各种颜色，之前方法这种颜色的随机
+transformation造成了几何失真。所有，作者提出，减少颜色的随机transformation是减轻I2I中几何失真的一个办法。
+提出，minimal geometry-distortion constraint (MGC)，限制在translation过程中保持像素级结构。举个简单例子就是：一张图片中叶子的颜色可以是红色（秋天），也可以是绿色（夏天），但是translation
+前后，叶子的位置应该是一致的。这确实可以解决I2I中几何失真问题。
+推导rSMI，数学公式很多。
+
+问题：
+1.为什么要设计新的MI，已有的MI不能实现吗？
+
+总的来说，作者发现了现有I2I中几何失真的问题，并且分析了可能是translation过程中颜色随机transformation造成该问题，所有，提出MGC，通过rSMI来衡量translation前后图片的信息，以此来限制translation
+时保持几何信息。
