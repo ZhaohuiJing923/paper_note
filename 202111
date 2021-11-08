@@ -31,3 +31,27 @@ transformation造成了几何失真。所有，作者提出，减少颜色的随
 
 总的来说，作者发现了现有I2I中几何失真的问题，并且分析了可能是translation过程中颜色随机transformation造成该问题，所有，提出MGC，通过rSMI来衡量translation前后图片的信息，以此来限制translation
 时保持几何信息。
+
+
+# 2021-11-8
+Title：Unpaired Image-to-Image Translation using Adversarial Consistency Loss
+Auther：Yihao Zhao
+Comments：ACL-GAN，ECCV2020的一篇文章。主要是提出了一种新的loss用于unpaired I2I。
+
+主要是考虑到cycle-consistency loss的不足：‘due to the strict pixel-level constraint, it cannot perform shape changes, remove large objects, or ignore irrelevant texture.’说主要
+问题在于，它假设translated images contain all the information of the input images in order to reconstruct the input images。这导致保留source domain feature，比如大目标的痕迹（眼镜）
+纹理（脸上的胡子），不好。此外，cycle-consistency loss约束source domain的形状改变（头发和脸型几乎没有变化）。
+我认为它文章的重点是说，想让生成的image包含source domain的信息，从分布的角度，而不是保留pixel-level的一致性。translated image不需要和特定的source domin image像。至于实现上的关键是：acl
+loss，判别器判别，(xS; ^xS)和(xS; ~xS)的真假，~xs是从x合成的，多模式输出，说是为了增加可能性。进一步，可以，让判别器关注feature level，即^xs不需要和特定的source image像。
+
+
+Title：Contrastive Learning for Unpaired Image-to-Image Translation
+Auther：Taesung Park
+Comments：ECCV2020的文章，CUT，将对比学习思路引入到unpaired I2I中，通过对比学习来最大化输入输出间的互信息。
+
+主要是希望take on the appearance of the target domain (a zebra), while retaining the structure, or content, of the specific input horse。通常，appearance由对抗loss玉树，content是
+cycle-consistency保持。但是cycle-consistency，是双向，太严格，所有，提出straightforward的方式，实现保留input的结构信息，同时能有target的appearance信息。
+实现：contrastive loss, InfoNCE loss, which aims to learn an embedding or an encoder that associates corresponding patches to each other, while disassociating them from others.
+encoder在学习时关注the commonalitiesbetween the two domains, such as object parts and shapes, while being invariant to the differences, such as the textures of the animals.
+重点是图2，We set up an (N+1)-way classication problem, where N negative patches are sampled from the same input image at different locations。
+
