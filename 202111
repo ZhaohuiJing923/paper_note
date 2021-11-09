@@ -55,3 +55,15 @@ cycle-consistency保持。但是cycle-consistency，是双向，太严格，所�
 encoder在学习时关注the commonalitiesbetween the two domains, such as object parts and shapes, while being invariant to the differences, such as the textures of the animals.
 重点是图2，We set up an (N+1)-way classication problem, where N negative patches are sampled from the same input image at different locations。
 
+
+# 2021-11-9
+Title：SPatchGAN: A Statistical Feature Based Discriminator for Unsupervised Image-to-Image Translation
+Auther：Xuning Shao, Weidong Zhang
+Comments：这是网易AI lab在ICCV2021的一篇文章。针对unsupervised I2I任务中，提出了关注统计特征还不是单个patch的判别器网络。
+
+研究的出发点：目前的patchgan不能够保证unsupervised I2I网络中稳定性，而为了稳定和提升训练过程，各种约束如cycle-constraint，shared latent space 假设被提出来。这些约束用在生成器上来缓解
+模式坍塌等问题。然而，这些方法造成GAN和额外约束的冲突，导致不完全translation。比如图1中给的例子。所以本文，想不为生成器引入更多约束，而稳定判别器自身。所以提出SPatchGAN，利用了统计特征而不
+是patch。
+它文章分析自己work的点：与基于单个patch的方法不同，它的判别器的输入来源于统计特征。统计特征通常比单个patch更稳定，因为它的每个元素是在HW的patch上计算。不同与单个patch受限的感受野，每个统计
+特性是关于整张图的。全局的视野有助于验证形状变形的正确性。
+
