@@ -53,7 +53,7 @@ Comments：ECCV2020的文章，CUT，将对比学习思路引入到unpaired I2I�
 cycle-consistency保持。但是cycle-consistency，是双向，太严格，所有，提出straightforward的方式，实现保留input的结构信息，同时能有target的appearance信息。
 实现：contrastive loss, InfoNCE loss, which aims to learn an embedding or an encoder that associates corresponding patches to each other, while disassociating them from others.
 encoder在学习时关注the commonalitiesbetween the two domains, such as object parts and shapes, while being invariant to the differences, such as the textures of the animals.
-重点是图2，We set up an (N+1)-way classication problem, where N negative patches are sampled from the same input image at different locations。
+重点是图2，We set up an (N+1)-way classification problem, where N negative patches are sampled from the same input image at different locations。
 
 
 # 2021-11-9
@@ -66,4 +66,13 @@ Comments：这是网易AI lab在ICCV2021的一篇文章。针对unsupervised I2I
 是patch。
 它文章分析自己work的点：与基于单个patch的方法不同，它的判别器的输入来源于统计特征。统计特征通常比单个patch更稳定，因为它的每个元素是在HW的patch上计算。不同与单个patch受限的感受野，每个统计
 特性是关于整张图的。全局的视野有助于验证形状变形的正确性。
+
+
+读了以上ACL-GAN，CUT，Cityscapes，MGC，SPatchGAN五篇文章，对我自己的任务有何启发？
+我的任务的描述：想要从sharp图中预测的motion flow，既有保持与原图结构上的一致，还能在每个语义内保证flow大小、方向的多样性呢。
+思考：
+1.为什么要思考这个问题？用youjian的motion offset，从blurry到pre-train的motion offset，是可以训练出来的，不过是得到offset。但是换成blurry中估计flow，就不太行了，loss可以下降，但最好
+收敛到1，并且估计的motion flow也不够好。这还是在L1 loss的强约束下。但是我们的目的是要生成多样的motion flow，前一步强约束都效果不好，更不要说用讨论的sharp-flow pair对的GAN loss了。GAN loss
+对我的任务来说还是约束比较强，我们希望，结构一致性，然后语义内的flow 的大小、方向都可以多样，所以才有了师兄让我看看郭家贤那篇文章，希望能够找到一些思路。
+2.
 
