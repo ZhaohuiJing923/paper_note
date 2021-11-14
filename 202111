@@ -124,6 +124,15 @@ Auther：Sung-Jin Cho
 Comments：高丽大学，ICCV2021上的一篇文章，主要是设计轻量化的去模糊网络。
 
 他们重新思考了由粗到细的机制，提出了新的叫做多输入多输出的UNet网络。处理多尺度模糊与低计算复杂度。一个encoder-decoder UNet网络。主要是通过SCM，AFF来实现多尺度输入的并入网络和互相融合。
+结构：1）一个decoder网络输出多个去模糊图片，简单，可以模拟堆叠子网的传统网络，有粗到细的逐步恢复清晰图像。2）一个encoder网络采用多尺度输入图像。3）AFF（asymmetric feature fusion）
+有效的融合多尺度的特征。
 评价：轻量化网络，减少了参数量，内存友好：运行速度变快；MIMO—UNet++的去模糊的准确率甚至要好于MPRNet，这点还是很加分的。总的来说，是网络模型的魔改文章，但是能够保持效果就很加分了。
 从github上用户的反馈来看，平均的PSNR可以达到论文中所声称的，但是运行时间应该没有论文中声称的高。
+
+
+# 2021-11-14
+Title：Efficient Dynamic Scene Deblurring Using Spatially Variant Deconvolution Network with Optical Flow Guided Training
+Auther：Yuan Yuan
+Comments：这是CVPR2020的一篇文章，也是着眼于轻量化的去模糊网络。
+
 
