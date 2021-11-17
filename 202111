@@ -136,7 +136,10 @@ baseline：首先，研究传统的在闭训练集上学的生成网络，NN，G
 沿用语义分割的传统方法，评估用OE训练的k+1分类器，我们使用softmax得分对应的(K+1)其他类作为开集似然
 设置1：
 
-它自己声称：用于开集识别的OpenGAN结合的两个技术：在OTS特征而不是像素上训练一个开或闭的判别器，且对抗性合成假的开集数据来增广开集训练数据集。它在开集图像识别和语义分割上取得了很好的性能。
+总的来说，它为什么会中：
+基于GAN的，假设train只有inlier image；基于OE的，只用到outlier image。本文既用到了outlier image，也用到了生成的fake data。
+对抗性合成假的开集数据来增广开集训练数据集，且feature level比pixel效果还要好。证明在open的valset上选择D，直接用GAN-discriminator作为开集可能性函数也是有效的，不依赖reconstruct 
+error。
 
 
 Title：Rethinking Coarse-to-Fine Approach in Single Image Deblurring
