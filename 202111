@@ -174,3 +174,13 @@ R将成为专家，以最小的误差从目标类中重构样本，成功愚弄D
 之后的人所说，这种基于GAN的方法不足在于GAN的训练是不稳定的。
 
 
+# 2021-11-18
+Title：Efficient Spatio-Temporal Recurrent Neural Network for Video Deblurring
+Auther：Zhihang Zhong, Ye Gao, Yinqiang Zheng, and Bo Zheng
+Comments：是ECCV2020的一篇文章，做的是video deblur。
+
+提出加一个时空的RNN，STRNN。网络结构和思路都很清晰。考虑到GoPro等合成的模糊图是否能够反映真实场景的模糊，新建了Beam-Splitter Dataset (BSD)数据集，使用带有两个同步摄像头的分束系统得到BSD。
+1.a novel RNN-based method for more computational efficient video deblurring. Residual dense block was adopted to the RNN cell to generate hierarchical features from current
+frame for better restoration.
+2.utilized the global spatio-temporal fusion module for fusing the effective components of hierarchical features from past and future frames.
+
