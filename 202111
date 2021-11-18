@@ -177,10 +177,21 @@ R将成为专家，以最小的误差从目标类中重构样本，成功愚弄D
 # 2021-11-18
 Title：Efficient Spatio-Temporal Recurrent Neural Network for Video Deblurring
 Auther：Zhihang Zhong, Ye Gao, Yinqiang Zheng, and Bo Zheng
-Comments：是ECCV2020的一篇文章，做的是video deblur。
+Comments：是ECCV2020的一篇文章，做的是video deblur。ESTRNN，PSNR：31.07，SSIM：0.9023
 
 提出加一个时空的RNN，STRNN。网络结构和思路都很清晰。考虑到GoPro等合成的模糊图是否能够反映真实场景的模糊，新建了Beam-Splitter Dataset (BSD)数据集，使用带有两个同步摄像头的分束系统得到BSD。
 1.a novel RNN-based method for more computational efficient video deblurring. Residual dense block was adopted to the RNN cell to generate hierarchical features from current
 frame for better restoration.
 2.utilized the global spatio-temporal fusion module for fusing the effective components of hierarchical features from past and future frames.
+
+
+Title：Cascaded Deep Video Deblurring Using Temporal Sharpness Prior
+Auther：Jinshan Pan, Haoran Bai, and Jinhui Tang
+Comments：南京理工大学，潘金山组的文章，CVPR2020的文章。CDVD-TSP，PSNR：31.67，SSIM：0.9279。
+
+他们组从18年起，一直在做low-level的工作，图像去模糊，去雾，去噪，视频的去模糊等都有所涉及，并且产出也很好。
+1. a simple and compact deep CNN model that simultaneously estimates the optical flow and latent frames for video deblurring.
+2. To better explore the properties of consecutive frames, we develop a temporal sharpness prior to constrain deep CNN models.
+预训练的PWCNet得到两帧间光流，光流可以可以作为简单的模糊核，作用到清晰图上，产生模糊图。知道了模糊图和光流，同样可以反向计算出清晰图，本文采取了这个思路。
+我通过这篇文章，学到，已知光流，如何从清晰图得到模糊图。
 
